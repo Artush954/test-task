@@ -91,14 +91,7 @@ class EmployeeController extends Controller
 
         $validated = $request->validated();
 
-        $employee = employee::where('id',$id)->update([
-            'name'=>$validated['name'],
-            'patronymic'=>$validated['patronymic'],
-            'surname'=> $validated['surname'],
-            'birthday'=> $validated['birthday'],
-            'position'=> $validated['position'],
-            'phone'=>$validated['phone'],
-         ]);
+        $employee = Employee::where('id',$id)->update($validated);
 
          return [
             'message'=>'Updated Employee',
@@ -162,7 +155,7 @@ class EmployeeController extends Controller
  * )
  */
     public function get($id){
-        $employee = employee::where('id',$id)->get();
+        $employee = Employee::where('id',$id)->get();
 
         return  EmployeeResource::collection($employee);
     }

@@ -18,6 +18,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::post('/employees',[EmployeeController::class,'create']);
+
 Route::post('/employees/{id}',[EmployeeController::class,'edit']);
+
 Route::get('/employees/{id}',[EmployeeController::class,'get']);
+
 Route::get('/employees',[EmployeeController::class,'all']);
