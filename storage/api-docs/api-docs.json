@@ -1,0 +1,262 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Employee microservice Api Documentation",
+        "description": "Employee microservice Api Documentation",
+        "contact": {
+            "name": "Artush PEetrosyan",
+            "email": "apyan@gmail.com"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "/api/v1"
+        }
+    ],
+    "paths": {
+        "/api/employee": {
+            "post": {
+                "tags": [
+                    "Employee"
+                ],
+                "summary": "Update employee",
+                "operationId": "35ec56ef35b66b1e18b39068b68c79cc",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "John Smith"
+                                    },
+                                    "surname": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "Smith"
+                                    },
+                                    "patronymic": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "Smiths"
+                                    },
+                                    "birthday": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": "15.02.1995"
+                                    },
+                                    "position": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": "Админ"
+                                    },
+                                    "phone": {
+                                        "type": "string",
+                                        "example": "+79260000000"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Employee updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": "1"
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "example": "John Smith"
+                                        },
+                                        "surname": {
+                                            "type": "string",
+                                            "format": "string",
+                                            "example": "Smith"
+                                        },
+                                        "patronymic": {
+                                            "type": "string",
+                                            "format": "string",
+                                            "example": "Smiths"
+                                        },
+                                        "birthday": {
+                                            "type": "string",
+                                            "format": "date",
+                                            "example": "15.02.1995"
+                                        },
+                                        "position": {
+                                            "type": "string",
+                                            "format": "date",
+                                            "example": "Админ"
+                                        },
+                                        "phone": {
+                                            "type": "string",
+                                            "example": "+79260000000"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error"
+                    }
+                }
+            }
+        },
+        "/api/employees/{id}": {
+            "get": {
+                "tags": [
+                    "Employees"
+                ],
+                "summary": "Retrieve an employee by ID",
+                "operationId": "b586e764ece338f87d0f7a68714ca85a",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the employee to retrieve",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Employee record retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "name": {
+                                            "type": "string",
+                                            "example": " jon"
+                                        },
+                                        "surname": {
+                                            "type": "string",
+                                            "example": " smith"
+                                        },
+                                        "patronymic": {
+                                            "type": "string",
+                                            "example": " jons"
+                                        },
+                                        "birthday": {
+                                            "type": "string",
+                                            "format": "date",
+                                            "example": " 15.02.2020"
+                                        },
+                                        "position": {
+                                            "type": "enum",
+                                            "example": " Админ"
+                                        },
+                                        "phone": {
+                                            "type": "string",
+                                            "example": " +792665854541"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Employee not found"
+                    }
+                }
+            }
+        },
+        "/api/employees": {
+            "get": {
+                "tags": [
+                    "Employees"
+                ],
+                "summary": "Retrieve all employees",
+                "operationId": "b95f77256e0c0aa059554952b3350cfe",
+                "parameters": [
+                    {
+                        "name": "filter",
+                        "in": "query",
+                        "description": "Filter employees by name, surname, position, or patronymic",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page number for paginated results",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "Number of results per page for paginated results",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Employees retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "name": {
+                                            "type": "string",
+                                            "example": " jon"
+                                        },
+                                        "surname": {
+                                            "type": "string",
+                                            "example": " smith"
+                                        },
+                                        "patronymic": {
+                                            "type": "string",
+                                            "example": " jons"
+                                        },
+                                        "birthday": {
+                                            "type": "string",
+                                            "format": "date",
+                                            "example": " 15.02.2020"
+                                        },
+                                        "position": {
+                                            "type": "enum",
+                                            "example": " Админ"
+                                        },
+                                        "phone": {
+                                            "type": "string",
+                                            "example": " +792665854541"
+                                        },
+                                        "meta": {
+                                            "properties": {
+                                                "pagination": {}
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
