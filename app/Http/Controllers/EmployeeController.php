@@ -157,7 +157,8 @@ class EmployeeController extends Controller
     public function get($id){
         $employee = Employee::where('id',$id)->firstOrFail();
 
-        return  EmployeeResource::collection($employee);
+        return new EmployeeResource($employee);
+        ;
     }
 /**
  * @OA\Get(
